@@ -17,7 +17,7 @@ H_b = x_b[10]-x_b[9]
 
 """----------------------------------------------------------------------------"""
 def funcA(x): #wrote each equation as a function
-    y_a = (1/4)*x**4 + x**2 - x
+    y_a = (1/4)*x**4 - x**2 - x
     return y_a
 
 def funcB(x): 
@@ -48,7 +48,7 @@ def first_der_cent(f,h,x):      # Numerical estimation of First Derivative Cente
 
 
 plt.figure()
-plt.plot(x_a, x_a**3 +2*x_a -1 , '-k', label = "Theoretical")
+plt.plot(x_a, x_a**3 - 2*x_a -1 , '-k', label = "Theoretical")
 plt.plot(x_a, first_der_forward(funcA,H_a,x_a), '.r', label = "Numerical (Forward)")
 plt.plot(x_a, first_der_back(funcA,H_a,x_a), '.b', label = "Numerical (Back)")
 plt.plot(x_a, first_der_cent(funcA,H_a,x_a), '.y', label = "Numerical (Center")
@@ -99,3 +99,4 @@ plt.legend()
        of error, which decreases the total error into being extremely insignificant or completely gone. """
        
 """Completed on Wed May 25  19:58:08 2022 """
+"""Final Edits on Mon May 30  17:38:20 2022 """
