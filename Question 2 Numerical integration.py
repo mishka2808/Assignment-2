@@ -39,8 +39,7 @@ def trap(div, x_c, fnc, h):
         n = n + 1                       #shifts the array to use the next set of x and y coords, so we can find the area of the new trapezium
     return trap
 
-print("Using the Trapezoidal method, we found the area under a) to be:  ",trap(a_div, x_a, funcA, H_a))
-print("Using the Trapezoidal method, we found the area under b) to be:  ",trap(b_div, x_b, funcB, H_b))
+
 
 """----------------------------------------------------------------------------"""
 
@@ -60,11 +59,27 @@ def simp(div, x_c, fnc, h):
             if not n%2 == 0: #odd terms
                 odds = odds + y
                 
-        thesum = (h/3)*(extra + 4*odds + 2*even) 
         n = n+1     #shifts to the next value in array
+    thesum = (h/3)*(extra + 4*odds + 2*even) 
     return thesum 
 
-print("Using the Simpsons method, we found the area under a) to be:     ",simp(a_div, x_a, funcA, H_a))
-print("Using the Simpsons method, we found the area under b) to be:     ",simp(b_div, x_b, funcB, H_b))
+
+print("Using the Trapezoidal method, we found the area under a) to be:  ", trap(a_div, x_a, funcA, H_a))
+print("Using the Simpsons method, we found the area under a) to be:     ", simp(a_div, x_a, funcA, H_a))
+print("The true value of a) is 8.145773950169553")
+print("The error from the Trapezoidal method is:                       ", 8.145773950169553 - trap(a_div, x_a, funcA, H_a))
+print("The error from the Simpsons method is:                           ", 8.145773950169553 - simp(a_div, x_a, funcA, H_a))
+
+print("------------------------------------------------------------------------------------")
+
+print("Using the Trapezoidal method, we found the area under b) to be:  ", trap(b_div, x_b, funcB, H_b))
+print("Using the Simpsons method, we found the area under b) to be:     ", simp(b_div, x_b, funcB, H_b))
+print("The true value of b) is 1.772453850905516")
+print("The error from the Trapezoidal method is:                       ", 1.772453850905516 - trap(b_div, x_b, funcB, H_b))
+print("The error from the Simpsons method is:                          ", 1.772453850905516 - simp(b_div, x_b, funcB, H_b))
+print(" ")
+print("Hence our calculations from using both methods are extremely accurate.")
+
 
 """Completed on Thurs May 26  14:46:44 2022 """
+"""Final Edits on Mon May 30  17:45:42 2022 """
