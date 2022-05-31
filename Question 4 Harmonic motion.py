@@ -23,7 +23,7 @@ t = 0           #initial time
 k = 1           #spring constant
 h = 0.001       #time step
 gamma = 0.2     #damping constant
-n = 0.4         #drag coeffiecent for fluid
+n = 0.01        #drag coefficient  for fluid
 
 def f(t,x,v):   #created functions for dx/dt
     return v
@@ -35,10 +35,10 @@ def i(t,x,v):
     return -k*x - gamma*v #and the damped version
 
 def a(t,x,v):       #and now in a fluid
-    return -k*x - n*v
+    return -k*x - n*v*v
 
 
-def RKUTTAX(fa,ga,x,v,t,k,h): 
+def RKUTTA_X(fa,ga,x,v,t,k,h): 
     x_values = []   #array to store values
 
     
@@ -62,7 +62,7 @@ def RKUTTAX(fa,ga,x,v,t,k,h):
         
     return x_values
 
-def RKUTTAT(t,h): 
+def T(t,h): 
     t_values = []
     
     for n in np.arange(0,10000,1):  #collects all the values for t
@@ -71,8 +71,11 @@ def RKUTTAT(t,h):
         
     return t_values
 
-plt.plot(RKUTTAT(t,h), RKUTTAX(f,g,x,v,t,k,h), label = "No Damping")
-plt.plot(RKUTTAT(t,h), RKUTTAX(f,i,x,v,t,k,h),"-y", label = "With Damping")
-plt.plot(RKUTTAT(t,h), RKUTTAX(f,a,x,v,t,k,h),"-r", label = "Fluid")
+plt.plot(T(t,h), RKUTTA_X(f,g,x,v,t,k,h), label = "No Damping")
+plt.plot(T(t,h), RKUTTA_X(f,i,x,v,t,k,h),"-y", label = "With Damping")
+plt.plot(T(t,h), RKUTTA_X(f,a,x,v,t,k,h),"-r", label = "Fluid")
 plt.legend() 
 plt.show()
+
+"""Completed on Mon May 30  19:58:08 2022 """
+"""Final Edits on Tue May 31  13:15:59 2022 """
